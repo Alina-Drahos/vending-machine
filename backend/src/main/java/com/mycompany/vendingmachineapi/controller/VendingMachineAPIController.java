@@ -6,10 +6,13 @@
 package com.mycompany.vendingmachineapi.controller;
 
 import com.mycompany.vendingmachineapi.dao.ItemDao;
+import com.mycompany.vendingmachineapi.dto.Change;
 import com.mycompany.vendingmachineapi.dto.Item;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,20 +26,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @author alinc
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value="/api")
+@CrossOrigin(origins = "*")
 public class VendingMachineAPIController {
+
     @Autowired
     ItemDao item;
-    
+
     @GetMapping("/items")
-    public List<Item> getAllItems(){
+    public List<Item> getAllItems() {
         return item.getAllItems();
     }
-    
-    @PutMapping("/items/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<Item> purchaseItem(@PathVariable int id){
-     return item.dispenseItem(id);
+
+    @PutMapping("/money/{totalAmount}/item/{id}")
+    public Change purchaseItem(@PathVariable BigDecimal totalAmount, @PathVariable int id) {
+        Change change= new Change(item.getItembyId(id),totalAmount);
+         item.dispenseItem(id);
+         return change ;
     }
- 
+
+
 }

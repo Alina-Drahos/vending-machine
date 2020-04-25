@@ -51,6 +51,13 @@ public class ItemDaoDB implements ItemDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Item getItembyId(int id) {
+        final String SELECT_ITEM="SELECT * FROM item"
+                + " WHERE id=?";
+        return jdbc.queryForObject(SELECT_ITEM, new ItemMapper(), id);
+    }
+
     public static final class ItemMapper implements RowMapper<Item> {
 
         @Override

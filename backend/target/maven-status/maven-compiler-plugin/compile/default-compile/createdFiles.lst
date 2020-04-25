@@ -2,5 +2,6 @@ com\mycompany\vendingmachineapi\dto\Item.class
 com\mycompany\vendingmachineapi\dao\ItemDaoDB$ItemMapper.class
 com\mycompany\vendingmachineapi\controller\VendingMachineAPIController.class
 com\mycompany\vendingmachineapi\dao\ItemDaoDB.class
+com\mycompany\vendingmachineapi\dto\Change.class
 com\mycompany\vendingmachineapi\App.class
 com\mycompany\vendingmachineapi\dao\ItemDao.class

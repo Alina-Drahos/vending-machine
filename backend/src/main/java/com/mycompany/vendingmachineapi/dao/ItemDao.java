@@ -18,5 +18,6 @@ public interface ItemDao {
     List<Item> dispenseItem(int itemId);
     Item addItem(Item newItem);
     List<Item> deleteItem(int itemId);
+    Item getItembyId(int Id);
 
 }

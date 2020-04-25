@@ -37,7 +37,8 @@ $(document).ready(function () {
         $("#allItems").empty();
         $.ajax({
             type: "GET",
-            url: "http://tsg-vending.herokuapp.com/items",
+            //url: "http://tsg-vending.herokuapp.com/items",
+            url: "http://localhost:8080/api/items",
             success: function (allItems) {
 
                 //loops through every item in the VendingMachine to add it to a card
@@ -62,8 +63,8 @@ $(document).ready(function () {
                         $('#makePurchase').on("click", function () {
                             $("#change").val("");
                             $.ajax({
-                                type: "POST",
-                                url: "http://tsg-vending.herokuapp.com/money/" + totalAmount / 100 + "/item/" + item.id,
+                                type: "PUT",
+                                url: "http://localhost:8080/api/money/" + totalAmount / 100 + "/item/" + item.id,
                                 success: function (change) {
                                     //alert("success");
                                     refresh();
