@@ -6,6 +6,7 @@
 package com.mycompany.vendingmachineapi.dao;
 
 import com.mycompany.vendingmachineapi.dto.Item;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,7 +34,16 @@ public class ItemDaoDB implements ItemDao {
 
     @Transactional
     @Override
-    public List<Item> dispenseItem(int itemId) {
+    public List<Item> dispenseItem(int itemId,BigDecimal money) throws InsufficientFundsException,OutOfStockException {
+        final String GET_ITEM_COUNT="SELECT *"
+                + " FROM item WHERE id=?";
+        List<Item> myItem=jdbc.query(GET_ITEM_COUNT, new ItemMapper(), itemId);
+        if(myItem.get(0).getQuantity()<1){
+            throw new OutOfStockException("SOLD OUT");
+        }
+        if(myItem.get(0).getPrice().compareTo(money)==1){
+            throw new InsufficientFundsException("Please deposit: "+(myItem.get(0).getPrice().subtract(money)).toString());
+        }
         final String UPDATE_COUNT="UPDATE item"
                 + " SET amount=(amount-1) WHERE id=?";
         jdbc.update(UPDATE_COUNT, itemId);

@@ -6,6 +6,7 @@
 package com.mycompany.vendingmachineapi.dao;
 
 import com.mycompany.vendingmachineapi.dto.Item;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 public interface ItemDao {
     
     List<Item> getAllItems();
-    List<Item> dispenseItem(int itemId);
+    List<Item> dispenseItem(int itemId, BigDecimal money) throws InsufficientFundsException,OutOfStockException;
     Item addItem(Item newItem);
     List<Item> deleteItem(int itemId);
     Item getItembyId(int Id);

@@ -5,7 +5,9 @@
  */
 package com.mycompany.vendingmachineapi.controller;
 
+import com.mycompany.vendingmachineapi.dao.InsufficientFundsException;
 import com.mycompany.vendingmachineapi.dao.ItemDao;
+import com.mycompany.vendingmachineapi.dao.OutOfStockException;
 import com.mycompany.vendingmachineapi.dto.Change;
 import com.mycompany.vendingmachineapi.dto.Item;
 import java.math.BigDecimal;
@@ -39,9 +41,9 @@ public class VendingMachineAPIController {
     }
 
     @PutMapping("/money/{totalAmount}/item/{id}")
-    public Change purchaseItem(@PathVariable BigDecimal totalAmount, @PathVariable int id) {
+    public Change purchaseItem(@PathVariable BigDecimal totalAmount, @PathVariable int id) throws InsufficientFundsException, OutOfStockException {
         Change change= new Change(item.getItembyId(id),totalAmount);
-         item.dispenseItem(id);
+         item.dispenseItem(id,totalAmount);
          return change ;
     }
 

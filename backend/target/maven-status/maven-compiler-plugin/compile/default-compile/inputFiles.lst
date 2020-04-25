@@ -3,4 +3,8 @@ C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\c
 C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\dto\Change.java
 C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\App.java
 C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\controller\VendingMachineAPIController.java
+C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\dao\InsufficientFundsException.java
+C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\dao\OutOfStockException.java
+C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\controller\VendingMachineExceptionHandler.java
 C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\dto\Item.java
+C:\Users\alinc\OneDrive\Documents\Github\vending-machine\backend\src\main\java\com\mycompany\vendingmachineapi\controller\Error.java
